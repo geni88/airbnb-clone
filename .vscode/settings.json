@@ -1,3 +1,10 @@
 {
-    "python.pythonPath": "/Users/jin/.local/share/virtualenvs/airbnb-clone-mBlSh_T7/bin/python"
+    "python.pythonPath": "/Users/jin/.local/share/virtualenvs/airbnb-clone-mBlSh_T7/bin/python",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.linting.flake8Args": [
+        "--max-line-lenth=88"
+    ]
 }
