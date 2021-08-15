@@ -13,7 +13,61 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
-    pass
+    """Item Admin Defintion"""
+
+    fieldsets = (
+        (
+            "Basic Info",
+            {"fields": ("name", "description", "country", "city", "price")},
+        ),
+        (
+            "Times",
+            {"fields": ("check_in", "check_out", "instant_book")},
+        ),
+        (
+            "Spaces",
+            {"fields": ("guests", "bedrooms", "baths")},
+        ),
+        (
+            "More About the Space",
+            {
+                "classes": ("collapse",),
+                "fields": ("amenities", "facilities", "house_rules"),
+            },
+        ),
+        (
+            "Last Details",
+            {"fields": ("host",)},
+        ),
+    )
+
+    list_display = (
+        "name",
+        "country",
+        "city",
+        "price",
+        "address",
+        "guests",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+    )
+
+    list_filter = (
+        "instant_book",
+        "host__superhost",
+        "room_type",
+        "amenities",
+        "facilities",
+        "house_rules",
+        "city",
+        "country",
+    )
+
+    search_fields = ["^city", "^host__username"]
+
+    filter_horizontal = ["amenities", "facilities", "house_rules"]
 
 
 @admin.register(models.Photo)
