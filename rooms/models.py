@@ -81,10 +81,16 @@ class Room(core_models.TimeStampedModel):
     check_out = models.TimeField(blank=True, null=True)
     instant_book = models.BooleanField(default=False)
     host = models.ForeignKey(
-        "users.User", on_delete=models.CASCADE, blank=True, null=True
+        "users.User",
+        related_name="rooms",
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     """foreignKey 가 host와 연결해줌"""
-    room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True)
+    room_type = models.ForeignKey(
+        "RoomType", related_name="rooms", on_delete=models.SET_NULL, null=True
+    )
     amenities = models.ManyToManyField("Amenity", blank=True)
     facilities = models.ManyToManyField("Facility", blank=True)
     house_rules = models.ManyToManyField("HouseRule", blank=True)
