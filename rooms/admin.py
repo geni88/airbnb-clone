@@ -86,6 +86,12 @@ class RoomAdmin(admin.ModelAdmin):
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
 
-    """"""
+    """Photo Admin Definition"""
+
+    # list_display = ("__str__", "get_thumbnail")
+
+    # def get_thumbmail(self, obj):
+    #     print(obj.file)
+    #     return ""
 
     pass
